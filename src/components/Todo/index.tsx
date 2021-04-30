@@ -18,9 +18,10 @@ interface IReceive {
   setTodoDoing?: any;
   setTodoCreated?: any;
   setIsNothing?: any;
+  updateCreate?: any;
 }
 
-const Todo: React.FC<IReceive> = ({ title, Icon, List, setTodoCompleted, todoCompleted, setTodoCreated, todoCreated, setTodoDoing, todoDoing, setIsNothing }: IReceive) => {
+const Todo: React.FC<IReceive> = ({ title, Icon, List, setTodoCompleted, todoCompleted, setTodoCreated, todoCreated, setTodoDoing, todoDoing, setIsNothing, updateCreate }: IReceive) => {
   const [isCreate, setIsCreate] = useState(false)
   const [isDelete, setIsDelete] = useState(false)
   const [isPassword, setIsPassword] = useState(false)
@@ -30,7 +31,7 @@ const Todo: React.FC<IReceive> = ({ title, Icon, List, setTodoCompleted, todoCom
 
   useEffect(() => {
     setListArray(List)
-  }, [List, todoCreated, todoDoing, todoCompleted])
+  }, [List, todoCreated, todoDoing, todoCompleted, setTodoCreated])
 
   const handleChangeOnDrag = useCallback((drag) => {
     if (!drag.destination) return;
@@ -47,13 +48,14 @@ const Todo: React.FC<IReceive> = ({ title, Icon, List, setTodoCompleted, todoCom
         await deleteItem({ id })
         const list = listArray.filter(item => item.id !== id)
         setListArray(list)
+        updateCreate(list)
         if (!list?.length && !todoDoing?.length) setIsNothing(true)
       }
     } catch (error) {
       console.log(error.message)
     }
 
-  }, [listArray, setIsNothing, todoDoing])
+  }, [listArray, setIsNothing, todoDoing, updateCreate])
 
   const handleOpenModalDelete = useCallback(async (id: any) => {
     setId(id)

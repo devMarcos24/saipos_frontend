@@ -39,6 +39,17 @@ const Home: React.FC = () => {
     getAllTodo()
   }, [])
 
+
+
+  const updateCreate = useCallback(async (list) => {
+    try {
+      setTodoCreated(list)
+    } catch (error) {
+      toast.error("Error ao criar os cardes aleatorios")
+    }
+
+  }, [])
+
   const handleCreateRandomCard = useCallback(async () => {
     try {
       await createNothing()
@@ -53,7 +64,7 @@ const Home: React.FC = () => {
     <>
       <div id="container">
         <div id="content">
-          <Todo setIsNothing={setIsNothing} setTodoDoing={setTodoDoing} List={todoCreated} Icon={MdBorderColor} setTodoCreated={setTodoCreated} todoCreated={todoCreated} todoDoing={todoDoing} title="Criado" />
+          <Todo setIsNothing={setIsNothing} setTodoCreated={setTodoCreated} updateCreate={updateCreate} setTodoDoing={setTodoDoing} List={todoCreated} Icon={MdBorderColor} todoCreated={todoCreated} todoDoing={todoDoing} title="Criado" />
           <Todo setIsNothing={setIsNothing} setTodoCompleted={setTodoCompleted} setTodoCreated={setTodoCreated} todoDoing={todoDoing} todoCreated={todoCreated} todoCompleted={todoCompleted} List={todoDoing} Icon={MdInsertChart} title="Fazendo" />
           <Todo setIsNothing={setIsNothing} setTodoDoing={setTodoDoing} List={todoCompleted} todoDoing={todoDoing} todoCreated={todoCreated} Icon={MdCloudDone} title="Feito" />
           <div id="logo">
