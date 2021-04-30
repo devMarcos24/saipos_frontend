@@ -24,12 +24,6 @@ const Home: React.FC = () => {
         setTodoDoing(doing)
         setTodoCompleted(completed)
 
-        if (!created.length && !doing.length) {
-          setIsNothing(true)
-        } else {
-          setIsNothing(false)
-        }
-
       } catch (error) {
         console.log(error.message)
       }
@@ -37,7 +31,15 @@ const Home: React.FC = () => {
 
 
     getAllTodo()
-  }, [todoCreated])
+  }, [])
+
+  useEffect(() => {
+    if (!todoDoing.length && !todoCreated.length) {
+      setIsNothing(true)
+    } else {
+      setIsNothing(false)
+    }
+  }, [todoDoing, todoCreated])
 
   const handleCreateRandomCard = useCallback(async () => {
     try {
