@@ -1,0 +1,94 @@
+#containerModalPassword {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: #b5b5b56b;
+}
+
+#contentModalPassword {
+  width: 25%;
+  height: 22vh;
+  background: #fff;
+  padding: 25px;
+  border-radius: 25px;
+  align-items: center;
+}
+
+#titlePassword {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+#contentModalPassword strong {
+  font-size: 25px;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+#contentModalPassword input {
+  width: 100%;
+  height: 25px;
+  margin: 15px 0;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+#contentModalPassword div {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+#imgContainerDelete {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#imgContainer img {
+  width: 180px;
+}
+
+#cancel-button-password {
+  right: 28.5%;
+  width: 100%;
+  height: 40px;
+  background: #303dc9;
+  border: 0;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.5s;
+  border-radius: 8px;
+}
+
+#cancel-button-password:hover {
+  transition: 0.3s;
+  background: #222b8a;
+}
+
+#delete-button-password {
+  right: 28.5%;
+  width: 100%;
+  height: 40px;
+  margin-left: 10px;
+  background: #da883b;
+  border: 0;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.5s;
+  border-radius: 8px;
+}
+
+#delete-button-password:hover {
+  transition: 0.3s;
+  background: #a0652d;
+}

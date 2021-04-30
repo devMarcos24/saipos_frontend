@@ -1,0 +1,123 @@
+.toDo {
+  width: 100%;
+  max-height: 100vh;
+  background: rgb(230, 230, 230);
+  padding: 10px;
+  padding-bottom: 25px;
+}
+
+.title {
+  display: flex;
+  width: 100%;
+  height: 40px;
+  padding: 8px;
+  background: #ffffff;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px 2px 8px 2px;
+  margin-bottom: 10px;
+}
+
+.title span {
+  font-family: "Roboto", "Franklin Gothic Medium", "Arial Narrow";
+  font-size: 16px;
+}
+
+.title button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", "Franklin Gothic Medium", "Arial Narrow";
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  transition: 0.2s;
+}
+
+ul {
+  height: 84vh;
+  overflow-y: auto;
+}
+
+.title button:hover {
+  transition: 0.3s;
+  background: #fd6000;
+  color: #fff;
+}
+
+.icon {
+  margin-right: 8px;
+  font-size: 20px;
+  color: #fd6000;
+}
+
+#iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#itensComponents {
+  width: 100%;
+}
+
+#itensComponents li {
+  list-style: none;
+  width: 100%;
+  height: 200px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+#itensComponents li + li {
+  margin-top: 10px;
+}
+
+.titleCard {
+  width: 100%;
+  background: #fd6000;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.titleCard input {
+  width: 100%;
+  background: none;
+  border: 0;
+  color: #fff;
+  font-weight: bold;
+}
+
+.buttonsCard {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.buttonsCard button {
+  width: 100%;
+  height: 30px;
+  background: rgba(225, 125, 19, 0.968);
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.buttonsCard button + button {
+  margin-left: 10px;
+  background: #3160b7;
+}
+.description {
+  height: 48%;
+  border: 2px solid #000;
+  border-radius: 8px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 4px;
+}
