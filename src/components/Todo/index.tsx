@@ -17,9 +17,10 @@ interface IReceive {
   setTodoCompleted?: any;
   setTodoDoing?: any;
   setTodoCreated?: any;
+  setIsNothing?: any;
 }
 
-const Todo: React.FC<IReceive> = ({ title, Icon, List, setTodoCompleted, todoCompleted, setTodoCreated, todoCreated, setTodoDoing, todoDoing }: IReceive) => {
+const Todo: React.FC<IReceive> = ({ title, Icon, List, setTodoCompleted, todoCompleted, setTodoCreated, todoCreated, setTodoDoing, todoDoing, setIsNothing }: IReceive) => {
   const [isCreate, setIsCreate] = useState(false)
   const [isDelete, setIsDelete] = useState(false)
   const [isPassword, setIsPassword] = useState(false)
@@ -46,12 +47,13 @@ const Todo: React.FC<IReceive> = ({ title, Icon, List, setTodoCompleted, todoCom
         await deleteItem({ id })
         const list = listArray.filter(item => item.id !== id)
         setListArray(list)
+        if (!list?.length && !todoDoing?.length) setIsNothing(true)
       }
     } catch (error) {
       console.log(error.message)
     }
 
-  }, [listArray])
+  }, [listArray, setIsNothing, todoDoing])
 
   const handleOpenModalDelete = useCallback(async (id: any) => {
     setId(id)
@@ -81,7 +83,6 @@ const Todo: React.FC<IReceive> = ({ title, Icon, List, setTodoCompleted, todoCom
       setListArray(newListArray)
       setTodoCreated([...todoCreated, { ...item, status: 'created' }])
     }
-    console.log(finditem.back)
     if (finditem.status === "completed" && finditem.back !== 2) {
       updateItem({ id, status: 'doing', back: finditem.back + 1 })
 
@@ -89,8 +90,9 @@ const Todo: React.FC<IReceive> = ({ title, Icon, List, setTodoCompleted, todoCom
       const newListArray = listArray.splice(index, 1)
       setListArray(newListArray)
       setTodoDoing([...todoDoing, { ...item, status: 'doing', back: finditem.back + 1 }])
+      if (!todoCreated?.length && !todoDoing?.length) setIsNothing(false)
     }
-  }, [listArray, setTodoCreated, todoCreated, setTodoDoing, todoDoing])
+  }, [listArray, setTodoCreated, todoCreated, setTodoDoing, setIsNothing, todoDoing])
 
   const handleNextCard = useCallback(async (id, index) => {
 
@@ -112,8 +114,9 @@ const Todo: React.FC<IReceive> = ({ title, Icon, List, setTodoCompleted, todoCom
       const newListArray = listArray.splice(index, 1)
       setListArray(newListArray)
       setTodoCompleted([...todoCompleted, { ...item, status: 'completed' }])
+      if (!todoCreated?.length && !todoDoing?.length) setIsNothing(true)
     }
-  }, [listArray, setTodoDoing, todoDoing, setTodoCompleted, todoCompleted])
+  }, [listArray, setTodoDoing, todoDoing, todoCreated, setIsNothing, setTodoCompleted, todoCompleted])
   return (
     <>
       {isCreate && <ModalNewTodo isCreate={isCreate} setIsCreate={setIsCreate} />}

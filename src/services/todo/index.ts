@@ -33,10 +33,11 @@ export async function createNothing(): Promise<void> {
   await Api.post('/todo/nothing')
 }
 
-export async function deleteItem({ id }: IDeleteTodo): Promise<object> {
-  const { data } = await Api.delete(`/todo/${id}`)
-
-  return data
+export async function deleteItem({ id }: IDeleteTodo): Promise<void> {
+  return new Promise<void>(async (resolve): Promise<void> => {
+    await Api.delete(`/todo/${id}`)
+    resolve()
+  })
 }
 
 export async function updateItem({ id, status, back }: IUpdateTodo): Promise<object> {

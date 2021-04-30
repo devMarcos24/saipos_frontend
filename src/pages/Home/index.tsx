@@ -24,6 +24,12 @@ const Home: React.FC = () => {
         setTodoDoing(doing)
         setTodoCompleted(completed)
 
+        if (!created.length && !doing.length) {
+          setIsNothing(true)
+        } else {
+          setIsNothing(false)
+        }
+
       } catch (error) {
         console.log(error.message)
       }
@@ -32,14 +38,6 @@ const Home: React.FC = () => {
 
     getAllTodo()
   }, [])
-
-  useEffect(() => {
-    if (!todoDoing.length && !todoCreated.length) {
-      setIsNothing(true)
-    } else {
-      setIsNothing(false)
-    }
-  }, [todoDoing, todoCreated])
 
   const handleCreateRandomCard = useCallback(async () => {
     try {
@@ -55,9 +53,9 @@ const Home: React.FC = () => {
     <>
       <div id="container">
         <div id="content">
-          <Todo setTodoDoing={setTodoDoing} List={todoCreated} Icon={MdBorderColor} todoDoing={todoDoing} title="Criado" />
-          <Todo setTodoCompleted={setTodoCompleted} setTodoCreated={setTodoCreated} todoCreated={todoCreated} todoCompleted={todoCompleted} List={todoDoing} Icon={MdInsertChart} title="Fazendo" />
-          <Todo setTodoDoing={setTodoDoing} List={todoCompleted} todoDoing={todoDoing} Icon={MdCloudDone} title="Feito" />
+          <Todo setIsNothing={setIsNothing} setTodoDoing={setTodoDoing} List={todoCreated} Icon={MdBorderColor} setTodoCreated={setTodoCreated} todoCreated={todoCreated} todoDoing={todoDoing} title="Criado" />
+          <Todo setIsNothing={setIsNothing} setTodoCompleted={setTodoCompleted} setTodoCreated={setTodoCreated} todoDoing={todoDoing} todoCreated={todoCreated} todoCompleted={todoCompleted} List={todoDoing} Icon={MdInsertChart} title="Fazendo" />
+          <Todo setIsNothing={setIsNothing} setTodoDoing={setTodoDoing} List={todoCompleted} todoDoing={todoDoing} todoCreated={todoCreated} Icon={MdCloudDone} title="Feito" />
           <div id="logo">
             <img src={logo} alt="Logo Saipos" />
           </div>

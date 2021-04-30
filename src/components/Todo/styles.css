@@ -67,7 +67,7 @@ ul {
 #itensComponents li {
   list-style: none;
   width: 100%;
-  height: 200px;
+  height: auto;
   background: #fff;
   padding: 10px;
   border-radius: 8px;
@@ -114,7 +114,7 @@ ul {
   background: #3160b7;
 }
 .description {
-  height: 48%;
+  height: auto;
   border: 2px solid #000;
   border-radius: 8px;
   margin-top: 10px;
